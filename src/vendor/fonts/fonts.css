@@ -1,0 +1,31 @@
+@font-face {
+  src:
+    url(Inter.woff2) format('woff2-variations');
+  font-family: 'Inter';
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  src:
+    url(Poppins-Medium.woff2) format('woff2');
+  font-family: 'Poppins';
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  src:
+    url(Poppins-SemiBold.woff2) format('woff2');
+  font-family: 'Poppins';
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  src:
+    url(Poppins-Bold.woff2) format('woff2');
+  font-family: 'Poppins';
+  font-weight: 700;
+  font-style: normal;
+}
