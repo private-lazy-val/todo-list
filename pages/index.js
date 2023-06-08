@@ -23,9 +23,21 @@ listContainer.addEventListener('click', e => {
   }
 })
 
-tasksContainer.addEventListener('click', e =>
-{
-  if(e.target.tagName.toLowerCase() === 'input') {
+newListForm.addEventListener('submit', e => {
+  e.preventDefault();
+  const listName = newListInput.value;
+  if (listName === '') return;
+  const list = createList(listName);
+  newListInput.value = null;
+  lists.push(list);
+  if (lists.length === 1) {
+    selectedListId = list.id;
+  }
+  saveAndRender();
+})
+
+tasksContainer.addEventListener('click', e => {
+  if (e.target.className === 'todo-list__input') {
     const selectedList = lists.find(list => list.id === selectedListId);
     const selectedTask = selectedList.tasks.find(task => task.id === e.target.id);
     selectedTask.complete = e.target.checked;
@@ -33,20 +45,11 @@ tasksContainer.addEventListener('click', e =>
     renderTaskCount(selectedList);
   }
 })
-newListForm.addEventListener('submit', e => {
-  e.preventDefault();
-  const listName = newListInput.value;
-  if (listName == null || listName === '') return;
-  const list = createList(listName);
-  newListInput.value = null;
-  lists.push(list);
-  saveAndRender();
-})
 
 newTaskForm.addEventListener('submit', e => {
   e.preventDefault();
   const taskName = newTaskInput.value;
-  if (taskName == null || taskName === '') return;
+  if (taskName.trim() === '') return;
   const task = createTask(taskName);
   newTaskInput.value = null;
   const selectedList = lists.find(list => list.id === selectedListId);
@@ -54,20 +57,68 @@ newTaskForm.addEventListener('submit', e => {
   saveAndRender();
 })
 
+tasksContainer.addEventListener('click', e => {
+  const editButton = e.target.closest('.todo-list__edit-btn');
+  if (editButton) {
+    const parentTaskElement = editButton.parentElement;
+    const editForm = parentTaskElement.querySelector('.edit-task__form');
+    const editInput = parentTaskElement.querySelector('.edit-task__input');
+    const cancelBtn = parentTaskElement.querySelector('.edit-task__cancel-btn');
+
+    // Populate the edit input with the current task name
+    const taskLabel = parentTaskElement.querySelector('.todo-list__label');
+    const oldTaskName = taskLabel.textContent
+    editInput.value = taskLabel.textContent;
+    // Show the edit form and hide the task label and edit button
+    editForm.style.display = '';
+    taskLabel.style.display = 'none';
+    editButton.style.display = 'none';
+
+    cancelBtn.addEventListener('click', () => {
+      editInput.value = oldTaskName;
+    })
+  }
+})
+tasksContainer.addEventListener('submit', e => {
+  if (!e.target.matches('.edit-task__form')) return;
+  e.preventDefault();
+  const editForm = e.target; // '.edit-task__form'
+  const parentTaskElement = editForm.parentElement; // '.todo-list__task'
+  const editInput = editForm.querySelector('.edit-task__input');
+
+  const taskLabel = parentTaskElement.querySelector('.todo-list__label');
+  const checkbox = parentTaskElement.querySelector('.todo-list__input');
+  const editButton = parentTaskElement.querySelector('.todo-list__edit-btn');
+
+  // Update the task name
+  taskLabel.textContent = editInput.value;
+
+  editForm.style.display = 'none';
+  taskLabel.style.display = '';
+  editButton.style.display = '';
+
+  const selectedList = lists.find(list => list.id === selectedListId);
+  const selectedTask = selectedList.tasks.find(task => task.id === checkbox.id);
+  selectedTask.name = editInput.value;
+
+  saveAndRender();
+})
+
 function createList(name) {
   return {id: Date.now().toString(), name: name, tasks: []};
 }
+
 function createTask(name) {
   return {id: Date.now().toString(), name: name, complete: false};
 }
 
-deleteListBtn.addEventListener('click', e => {
+deleteListBtn.addEventListener('click', () => {
   lists = lists.filter(list => list.id !== selectedListId);
-  selectedListId = null;
+  selectedListId = lists.length > 0 ? lists[0].id : null;
   saveAndRender();
 })
 
-deleteCompleteTaskBtn.addEventListener('click', e => {
+deleteCompleteTaskBtn.addEventListener('click', () => {
   const selectedList = lists.find(list => list.id === selectedListId);
   selectedList.tasks = selectedList.tasks.filter(task => !task.complete);
   saveAndRender();
@@ -85,14 +136,14 @@ function render() {
   renderList();
 
   const selectedList = lists.find(list => list.id === selectedListId);
-  if (selectedListId == null) {
-    listDisplayContainer.style.display = 'none';
-  } else {
+  if (selectedList) {
     listDisplayContainer.style.display = '';
     listTitleElement.textContent = selectedList.name;
     renderTaskCount(selectedList);
     clearElement(tasksContainer);
     renderTasks(selectedList);
+  } else {
+    listDisplayContainer.style.display = 'none';
   }
 }
 
@@ -108,7 +159,6 @@ function renderTasks(selectedList) {
     tasksContainer.appendChild(taskElement);
   })
 }
-
 
 function renderTaskCount(selectedList) {
   const incompleteTaskCount = selectedList.tasks.filter(task => !task.complete).length;
@@ -139,6 +189,5 @@ function clearElement(element) {
     element.removeChild(element.firstChild);
   }
 }
-
 
 render();

@@ -6,7 +6,8 @@
 
 ## Overview
 
-This is a simple To Do List web app that allows users to create tasks, group them into lists, and mark them as complete once done. Tasks can be easily added, edited, and deleted.
+This is a simple To Do List web app that allows users to create tasks, mark them as complete once done, and group them into lists.
+
 Additional features include a task counter and a feature to clear completed tasks.
 
 ### Hosting
