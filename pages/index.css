@@ -56,7 +56,7 @@ h4 {
   background-color: var(--clr-primary-green);
 }
 
-.content {
+.main {
   font-family: var(--ff-poppins-ss);
   font-size: 1.5rem;
   font-weight: var(--fw-medium);
@@ -329,7 +329,7 @@ h4 {
 
 /* TABLET <= 768px */
 @media only screen and (max-width: 768px) {
-  .content {
+  .main {
     grid:
       "header header" auto
       "lists lists" auto
