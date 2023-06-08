@@ -14,62 +14,67 @@
   <script src="https://kit.fontawesome.com/5ef5945330.js" crossorigin="anonymous"></script>
   <title>To Do List</title>
 
-<body class="content">
-<h1 class="header">Stuff I need to&nbsp;do</h1>
+<body class="page">
 
-<!-- All lists -->
-<div class="all-tasks">
-  <h2 class="all-tasks__h2">My lists</h2>
-  <ul class="all-tasks__list" data-lists></ul>
-  <form action="/" class="form" data-new-list-form>
-    <input type="text" class="new-item new-list" placeholder="new list name" aria-label="new list name"
-           data-new-list-input>
-    <button class="btn new-list__btn" aria-label="add new list"><i class="fa-solid fa-plus fa-lg"
-                                                                   style="color: #FCFFFC;"></i></button>
-  </form>
-</div>
+<main class="content">
+  <h1 class="header">Stuff I need to&nbsp;do</h1>
 
-<!-- To do list -->
-<div class="todo-list" data-list-display-container>
-  <div class="todo-list__header">
-    <h2 class="todo-list__h2" data-list-title></h2>
-    <p class="todo-list__tasks-counter" data-list-count></p>
-  </div>
-
-  <div class="todo-list__body">
-    <div class="todo-list__current-tasks" data-tasks></div>
-
-    <div class="todo-list__add-task">
-      <form action="/" class="form" data-new-task-form>
-        <input type="text" class="new-item new-task" placeholder="new task name" aria-label="new task name"
-               data-new-task-input>
-        <button class="btn new-task__btn" aria-label="add new task"><i class="fa-solid fa-plus fa-lg"
-                                                                       style="color: #87a330;"></i></button>
-      </form>
-    </div>
-  </div>
-  <div class="todo-list__remove-stuff">
-    <button class="btn todo-list__remove-btn" data-delete-completed-task-btn>Clear completed tasks</button>
-    <button class="btn todo-list__remove-btn" data-delete-list-btn>Delete list</button>
-  </div>
-  <div></div>
-</div>
-
-<template id="task-template">
-  <div class="todo-list__task">
-    <input type="checkbox" class="todo-list__input" id="">
-    <label class="todo-list__label" for=""><span class="custom-checkbox"></span></label>
-    <button class="btn todo-list__edit-btn" aria-label="edit task"><i class="fa-solid fa-pen-to-square fa-sm" style="color: #87a330;"></i></button>
-
-    <!-- Edit task form -->
-    <form action="" class="form edit-task__form" data-edit-task-form style="display: none;">
-      <input type="text" class="new-item edit-task__input" placeholder="edit task name" aria-label="edit task name">
-      <button class="btn edit-task__submit-btn" aria-label="update task"><i class="fa-solid fa-check fa-sm" style="color: #87a330;"></i></button>
-      <button class="btn edit-task__cancel-btn" aria-label="update task"><i class="fa-solid fa-xmark fa-sm" style="color: #292929;"></i></button>
+  <!-- All lists -->
+  <div class="all-tasks">
+    <h2 class="all-tasks__h2">My lists</h2>
+    <ul class="all-tasks__list" data-lists></ul>
+    <form action="/" class="form" data-new-list-form>
+      <input type="text" class="new-item new-list" placeholder="new list name" aria-label="new list name"
+             data-new-list-input>
+      <button class="btn new-list__btn" aria-label="add new list"><i class="fa-solid fa-plus fa-lg"
+                                                                     style="color: #FCFFFC;"></i></button>
     </form>
   </div>
-</template>
 
+  <!-- To do list -->
+  <div class="todo-list" data-list-display-container>
+    <div class="todo-list__header">
+      <h2 class="todo-list__h2" data-list-title></h2>
+      <p class="todo-list__tasks-counter" data-list-count></p>
+    </div>
+
+    <div class="todo-list__body">
+      <div class="todo-list__current-tasks" data-tasks></div>
+
+      <div class="todo-list__add-task">
+        <form action="/" class="form" data-new-task-form>
+          <input type="text" class="new-item new-task" placeholder="new task name" aria-label="new task name"
+                 data-new-task-input>
+          <button class="btn new-task__btn" aria-label="add new task"><i class="fa-solid fa-plus fa-lg"
+                                                                         style="color: #87a330;"></i></button>
+        </form>
+      </div>
+    </div>
+    <div class="todo-list__remove-stuff">
+      <button class="btn todo-list__remove-btn" data-delete-completed-task-btn>Clear completed tasks</button>
+      <button class="btn todo-list__remove-btn" data-delete-list-btn>Delete list</button>
+    </div>
+  </div>
+
+  <template id="task-template">
+    <div class="todo-list__task">
+      <input type="checkbox" class="todo-list__input" id="">
+      <label class="todo-list__label" for=""><span class="custom-checkbox"></span></label>
+      <button class="btn todo-list__edit-btn" aria-label="edit task"><i class="fa-solid fa-pen-to-square fa-sm"
+                                                                        style="color: #87a330;"></i></button>
+
+      <!-- Edit task form -->
+      <form action="" class="form edit-task__form" data-edit-task-form style="display: none;">
+        <input type="text" class="new-item edit-task__input" placeholder="edit task name" aria-label="edit task name">
+        <button class="btn edit-task__submit-btn" aria-label="update task"><i class="fa-solid fa-check fa-sm"
+                                                                              style="color: #87a330;"></i></button>
+        <button class="btn edit-task__cancel-btn" aria-label="update task"><i class="fa-solid fa-xmark fa-sm"
+                                                                              style="color: #292929;"></i></button>
+      </form>
+    </div>
+  </template>
+
+</main>
 </body>
 </html>
 
