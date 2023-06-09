@@ -25,7 +25,3 @@ The following technologies were used to develop this project:
 - Media queries
 - Responsive web design
 - Flexbox and Grid
-- Webpack
-- Babel
-- PostCSS
-- Core-JS
