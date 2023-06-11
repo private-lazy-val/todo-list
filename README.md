@@ -12,9 +12,11 @@ Additional features include a task counter and a feature to clear completed task
 
 ### Hosting
 
-To do list app is hosted on GitHub Pages. You can view the live site here:
 
-- [https://private-lazy-val.github.io/todoList/](https://private-lazy-val.github.io/todoList/)
+This project is hosted on:
+
+- [Vercel](https://todo-list-rho-liard.vercel.app/)
+- [GitHub Pages](https://private-lazy-val.github.io/todoList/)
 
 ### Technologies
 
