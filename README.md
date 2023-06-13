@@ -16,7 +16,7 @@ Additional features include a task counter and a feature to clear completed task
 This project is hosted on:
 
 - [Vercel](https://todo-list-rho-liard.vercel.app/)
-- [GitHub Pages]([https://private-lazy-val.github.io/todoList/](https://private-lazy-val.github.io/todo-list/))
+- [GitHub Pages](https://private-lazy-val.github.io/todo-list/)
 
 ### Technologies
 
