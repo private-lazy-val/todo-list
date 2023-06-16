@@ -1,6 +1,6 @@
 ## Table of Contents
 
-[Overview](#overview)
+- [Overview](#overview)
 - [Hosting](#hosting)
 - [Technologies](#technologies)
 
